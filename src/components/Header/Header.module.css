@@ -1,0 +1,25 @@
+.header {
+    background-color: var(--primary-color); /* Usa el verde principal */
+    padding: 1rem;
+    color: var(--secondary-color); /* Blanco */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navLink {
+    margin: 0 1rem;
+    color: var(--secondary-color); /* Blanco */
+    text-decoration: none;
+  }
+  
+  .navLink:hover {
+    text-decoration: underline;
+    color: var(--accent-color); /* Amarillo */
+  }
+  
