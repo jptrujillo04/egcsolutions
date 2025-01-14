@@ -6,7 +6,7 @@ import Header from "@/components/Header/Header";
 export const metadata = {
   title: "EGC Solutions - Innovación para tu Negocio",
   description:
-    "Transformamos tus ideas en soluciones tecnológicas innovadoras.",
+    "Mantenimiento, instalación y alquiler de plantas eléctricas Cabinas y cuartos insonorizados Servicio técnico.",
 };
 
 export default function RootLayout({ children }) {

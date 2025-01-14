@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <h1>EGC Solutions</h1>
+        <div className={styles.logo}>EGC Solutions</div>
         <nav>
           <Link href="#services" className={styles.navLink}>
             Servicios

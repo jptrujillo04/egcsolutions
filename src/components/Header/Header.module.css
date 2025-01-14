@@ -1,25 +1,30 @@
 .header {
-    background-color: var(--primary-color); /* Usa el verde principal */
-    padding: 1rem;
-    color: var(--secondary-color); /* Blanco */
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .navLink {
-    margin: 0 1rem;
-    color: var(--secondary-color); /* Blanco */
-    text-decoration: none;
-  }
-  
-  .navLink:hover {
-    text-decoration: underline;
-    color: var(--accent-color); /* Amarillo */
-  }
-  
+  position: absolute; /* Hace que el header esté sobre la imagen */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupa todo el ancho */
+  background-color: rgba(40, 167, 69, 0.7); /* Verde translúcido con opacidad */
+  color: white;
+  z-index: 10; /* Asegura que esté sobre la imagen */
+  padding: 1rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navLink {
+  margin: 0 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+  color: #ffd700; /* Amarillo */
+}

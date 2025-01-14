@@ -9,7 +9,6 @@
   --font-geist-mono: "Geist Mono", monospace;
 }
 
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -85,13 +84,4 @@ section {
 
 section + section {
   margin-top: 2rem;
-}
-
-footer {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 0.875rem;
-  margin-top: auto; /* Empuja el footer hacia abajo */
 }
