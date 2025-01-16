@@ -1,12 +1,108 @@
 .footer {
-    background-color: var(--primary-color); /* Usa el verde principal */
-    padding: 1rem;
-    color: var(--secondary-color); /* Blanco */
+  background-color: var(--primary-color); /* Fondo verde principal */
+  color: var(--secondary-color); /* Texto blanco */
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact,
+.social,
+.brand {
+  flex: 1 1 30%;
+}
+
+.contact h3,
+.social h3,
+.brand h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.contact p {
+  margin: 0.5rem 0;
+  display: flex; /* Habilita flexbox */
+  align-items: center; /* Alinea el contenido verticalmente */
+}
+
+.whatsapp {
+  color: var(--secondary-color); /* Ícono de WhatsApp en naranja */
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.whatsapp:hover {
+  color: var(--accent-color); /* Blanco en hover */
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem; /* Espacio entre íconos */
+  margin-top: 0.5rem;
+}
+
+.social-icons a {
+  display: inline-block;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+}
+
+.social-icons a:hover {
+  color: var(--accent-color); /* Naranja en hover */
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 0.5rem;
+}
+
+.email {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+.footerText {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact,
+  .social,
+  .brand {
+    flex: 1 1 100%;
     text-align: center;
   }
-  
-  .footerText {
-    margin: 0;
-    font-size: 0.875rem;
+
+  .social-icons {
+    justify-content: center;
   }
-  
+}
