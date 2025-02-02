@@ -3,16 +3,27 @@ import styles from "./Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  console.log("path", pathname);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Verifica si estás en la página de servicios
+  const isServicesPage = pathname === "/services";
+  console.log("isServicesPage", isServicesPage);
+
   return (
-    <header className={styles.header}>
+    <header
+      className={`${styles.header} ${
+        isServicesPage ? styles.headerServices : ""
+      }`}
+    >
       <div className={styles.container}>
         {/* Logo y texto */}
         <div className={styles["logo-container"]}>
@@ -50,7 +61,11 @@ export default function Header() {
               ×
             </button>
           )}
-          <Link href="#services" className={styles.navLink} onClick={toggleMenu}>
+          <Link
+            href="#services"
+            className={styles.navLink}
+            onClick={toggleMenu}
+          >
             Servicios
           </Link>
           <Link href="#about" className={styles.navLink} onClick={toggleMenu}>

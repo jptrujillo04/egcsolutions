@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./Services.module.css";
 
 export default function Services() {
@@ -17,23 +18,24 @@ export default function Services() {
       title: "SISTEMA DE CONTROL Y PROTECCIÓN",
       description:
         "Diagnóstico, configuración, suministro de módulos, indicadores, sensores, switches, etc.",
-      image: "/images/control.jpeg",
+      image: "/images/control.jpg",
     },
     {
       title: "RADIADORES",
-      description: "Flushing, limpieza, empaquetadura, pintura",
-      image: "/images/radiador.jpeg",
+      description:
+        "Desarme, sondeo, desincrustada de partes contaminadas, pintura y fluchin  para retirar impuerazas al bloque del motor.",
+      image: "/images/radiador.jpg",
     },
     {
       title: "ALQUILER",
       description: "Alquiler de plantas eléctricas y bancos resistivos",
-      image: "/images/planta.jpeg",
+      image: "/images/planta.jpg",
     },
     {
       title: "TANQUES Y SUMINISTRO DE COMBUSTIBLE",
       description:
         "Tenemos tanques de combustible y los suministros necesarios para estos.",
-      image: "/images/tanques.jpeg",
+      image: "/images/tanques.jpg",
     },
   ];
 
@@ -54,6 +56,11 @@ export default function Services() {
             </div>
           </div>
         ))}
+      </div>
+      <div className={styles.buttonContainer}>
+        <Link href="/services" className={styles.button}>
+          Ver todos los servicios
+        </Link>
       </div>
     </section>
   );

@@ -1,83 +1,90 @@
-.services {
-    padding: 2rem 1rem;
-    background-color: var(--secondary-color); /* Fondo blanco */
-}
-
-.title {
+.container {
+    padding: 2rem;
     text-align: center;
-    font-size: 2rem;
-    color: var(--primary-color); /* Verde principal */
+    background-color: var(--secondary-color); /* Fondo blanco */
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: var(--primary-color); /* Verde */
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    color: var(--gray-alpha-200); /* Gris */
     margin-bottom: 2rem;
-}
-
-.grid {
+  }
+  
+  .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta las columnas */
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.card {
+  }
+  
+  .card {
     background-color: white;
     border: 1px solid var(--gray-alpha-200); /* Bordes suaves */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column; /* Asegura que la imagen y el contenido estén bien distribuidos */
-}
-
-.card:hover {
+  }
+  
+  .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.image {
+  }
+  
+  .image {
     width: 100%;
-    height: 300px; /* Ajusta la altura para un tamaño uniforme */
-    object-fit: cover; /* Asegura que la imagen se recorte sin distorsión */
-    display: block;
-}
-
-.content {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .content {
     padding: 1rem;
     text-align: center;
-    flex-grow: 1; /* Hace que el contenido crezca si es necesario */
-}
-
-.content h3 {
+  }
+  
+  .content h3 {
     font-size: 1.2rem;
-    color: var(--primary-color); /* Verde principal */
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
-}
-
-.content p {
+  }
+  
+  .content p {
     font-size: 0.9rem;
     color: var(--gray-alpha-200);
-    margin-bottom: 1rem;
-}
-
-.buttonContainer {
-    text-align: center;
-    margin-top: 2rem;
   }
   
-  .button {
-    display: inline-block;
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+  
+  .pageButton {
     background-color: var(--primary-color); /* Verde */
     color: var(--secondary-color); /* Blanco */
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
     border-radius: 4px;
     font-size: 1rem;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s;
     cursor: pointer;
+    transition: background-color 0.3s;
   }
   
-  .button:hover {
+  .pageButton:disabled {
+    background-color: #ccc; /* Deshabilitado */
+    cursor: not-allowed;
+  }
+  
+  .pageButton:hover:enabled {
     background-color: var(--accent-color); /* Naranja en hover */
   }
   
