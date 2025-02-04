@@ -40,34 +40,30 @@ export default function ServicesPage() {
       image: "/images/tanques.jpg",
     },
     {
-      title: "SERVICIO 7",
-      description: "Descripción del servicio 7.",
-      image: "/images/service7.jpg",
+      title: "SUMINISTRO DE PIEZAS Y TABLEROS ELÉCTRICOS",
+      description:
+        "Suministramos las piezas necesarias para sus tableros electronicos",
+      image: "/images/tableros.jpg",
     },
     {
-      title: "SERVICIO 8",
-      description: "Descripción del servicio 8.",
-      image: "/images/service8.jpg",
+      title: "REPUESTOS",
+      description: "Todos los repuestos para tus plantas.",
+      image: "/images/repuestos.jpg",
     },
     {
-      title: "SERVICIO 9",
-      description: "Descripción del servicio 9.",
-      image: "/images/service9.jpg",
+      title: "CABINAS Y CUARTOS INSONORIZADOS",
+      description: "Cabinas y cuartos insonorizados",
+      image: "/images/cuarto.jpg",
     },
     {
-      title: "SERVICIO 10",
-      description: "Descripción del servicio 10.",
-      image: "/images/service10.jpg",
+      title: "TUBERÍAS DE ESCAPE",
+      description: "Tuberías de escape",
+      image: "/images/tuberias.jpg",
     },
     {
-      title: "SERVICIO 11",
-      description: "Descripción del servicio 11.",
-      image: "/images/service11.jpg",
-    },
-    {
-      title: "SERVICIO 12",
-      description: "Descripción del servicio 12.",
-      image: "/images/service12.jpg",
+      title: "MÓDULOS DE CONTROL",
+      description: "Módulos de control",
+      image: "/images/modulo.jpg",
     },
   ];
 

@@ -8,24 +8,26 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  console.log("path", pathname);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen((prev) => !prev);
   };
 
-  // Verifica si estás en la página de servicios
-  const isServicesPage = pathname === "/services";
-  console.log("isServicesPage", isServicesPage);
+  // Función que cierra el menú solo en dispositivos móviles
+  const closeMenuOnMobile = () => {
+    if (window.innerWidth <= 768) {
+      setMenuOpen(false);
+    }
+  };
 
   return (
     <header
       className={`${styles.header} ${
-        isServicesPage ? styles.headerServices : ""
+        pathname === "/services" ? styles.headerServices : ""
       }`}
     >
       <div className={styles.container}>
-        {/* Logo y texto */}
+        {/* Logo */}
         <div className={styles["logo-container"]}>
           <Link href="/">
             <Image
@@ -62,16 +64,24 @@ export default function Header() {
             </button>
           )}
           <Link
-            href="#services"
+            href="/services"
             className={styles.navLink}
-            onClick={toggleMenu}
+            onClick={closeMenuOnMobile}
           >
             Servicios
           </Link>
-          <Link href="#about" className={styles.navLink} onClick={toggleMenu}>
+          <Link
+            href="/#about"
+            className={styles.navLink}
+            onClick={closeMenuOnMobile}
+          >
             Nosotros
           </Link>
-          <Link href="#contact" className={styles.navLink} onClick={toggleMenu}>
+          <Link
+            href="/#contact"
+            className={styles.navLink}
+            onClick={closeMenuOnMobile}
+          >
             Contacto
           </Link>
         </nav>
