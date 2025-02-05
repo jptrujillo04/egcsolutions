@@ -1,0 +1,53 @@
+.brandsSection {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--secondary-color);
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .brandsTitle {
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+  }
+  
+  .brandsSlider {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100vw;
+    margin: auto;
+    scroll-behavior: smooth;
+  }
+  
+  .brandContainer {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .brandLogo {
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  /* 📱 Mostrar solo una imagen en móvil */
+  @media (max-width: 768px) {
+    .brandsSlider {
+      justify-content: center;
+    }
+  
+    .brandContainer {
+      width: 100vw;
+    }
+  
+    .brandLogo {
+      max-width: 120px;
+    }
+  }
+  
