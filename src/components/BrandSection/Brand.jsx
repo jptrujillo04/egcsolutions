@@ -8,7 +8,6 @@ const brands = [
   { name: "dosan", src: "/images/dosan.jpg", alt: "dosan" },
   { name: "perkins", src: "/images/perkins.jpg", alt: "perkins" },
   { name: "standford", src: "/images/standford.jpg", alt: "standford" },
-  { name: "tripplite", src: "/images/tripplite.jpg", alt: "tripplite" },
 ];
 
 export default function BrandsSection() {

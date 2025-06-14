@@ -108,6 +108,14 @@
   display: none;
 }
 
+.logoLink {
+  display: flex; /* Para alinear el logo y el texto */
+  align-items: center; /* Alineación vertical */
+  text-decoration: none; /* Quita el subrayado del enlace */
+  color: white; /* Define el color del texto del enlace. Cambia #333 por el color que desees. */
+  /* Podrías usar var(--tu-variable-de-color-principal) si usas variables CSS */
+}
+
 .nav.open .closeButton {
   display: block;
 }

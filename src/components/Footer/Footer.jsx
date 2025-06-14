@@ -14,7 +14,7 @@ export default function Footer() {
       {/* Contenido principal */}
       <div className={styles.container}>
         {/* Contacto */}
-        <div className={styles.contact}>
+        <div id="contact" className={styles.contact}>
           <h3>CONTÁCTANOS</h3>
           <p>Dirección: AK 70 # 74C - 30 Bogotá, Colombia</p>
           <p>

@@ -29,7 +29,7 @@ export default function Header() {
       <div className={styles.container}>
         {/* Logo */}
         <div className={styles["logo-container"]}>
-          <Link href="/">
+          <Link href="/" className={styles.logoLink}>
             <Image
               src="/logo.png"
               alt="EGC Solutions Logo"
@@ -37,8 +37,8 @@ export default function Header() {
               height={30}
               className={styles.logo}
             />
+            <span>EGC Solutions</span>
           </Link>
-          <span>EGC Solutions</span>
         </div>
 
         {/* Menú hamburguesa */}
@@ -63,6 +63,13 @@ export default function Header() {
               ×
             </button>
           )}
+           <Link
+            href="/"
+            className={styles.navLink}
+            onClick={closeMenuOnMobile}
+          >
+            Inicio
+          </Link>
           <Link
             href="/services"
             className={styles.navLink}
