@@ -1,52 +1,460 @@
+/* Estilos del componente Sector */
 .sectorsSection {
-    background-color: var(--primary-color);
-    padding: 4rem 0;
-    text-align: center;
-    overflow: hidden;
+  /* Variables de color corporativo */
+  --sector-primary-color: #2e7d32;  /* Verde corporativo */
+  --sector-secondary-color: #1b5e20; /* Verde más oscuro */
+  --sector-accent-color: #ffeb3b;   /* Amarillo corporativo */
+  --sector-text-color: #212121;     /* Negro para texto principal */
+  --sector-text-light: #424242;     /* Gris oscuro para texto secundario */
+  --sector-white: #ffffff;           /* Blanco puro */
+  --sector-gray-100: #f5f5f5;       /* Gris muy claro */
+  --sector-gray-200: #e0e0e0;       /* Gris claro */
+  --sector-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --sector-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --sector-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --sector-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 6rem 1rem;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--sector-gray-200);
+  border-bottom: 1px solid var(--sector-gray-200);
+}
+
+/* Utilidades */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Estilos base */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+}
+
+/* Encabezado */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.sectorsTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--sector-text-color);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  background: linear-gradient(90deg, var(--sector-primary-color), var(--sector-accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--sector-text-light);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Controles */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.controlButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--sector-white);
+  border: 2px solid var(--sector-primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--sector-primary-color);
+  font-size: 1.25rem;
+  transition: var(--sector-transition);
+  box-shadow: var(--sector-shadow-sm);
+}
+
+.controlButton:hover:not(:disabled) {
+  background: var(--sector-primary-color);
+  color: var(--sector-white);
+  transform: translateY(-2px);
+  box-shadow: var(--sector-shadow-md);
+}
+
+.controlButton:active:not(:disabled) {
+  background: var(--sector-secondary-color);
+  border-color: var(--sector-secondary-color);
+  transform: translateY(0);
+}
+
+.controlButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: var(--sector-gray-200);
+  color: var(--sector-gray-200);
+}
+
+/* Slider */
+.sectorsSlider {
+  display: flex;
+  gap: 24px;
+  padding: 2rem 1rem;
+  overflow-x: auto;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 1rem;
+}
+
+.sectorsSlider::-webkit-scrollbar {
+  display: none;
+}
+
+.sectorsSlider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tarjetas */
+.sectorCard {
+  flex: 0 0 300px;
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  background: var(--sector-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--sector-shadow-md);
+  transition: all 0.3s ease;
+  border: 2px solid var(--sector-gray-200);
+  position: relative;
+  opacity: 0.7;
+  transform: scale(0.95);
+  flex-shrink: 0;
+  scroll-snap-align: center;
+}
+
+/* Pseudo-elementos para el espaciado en los extremos */
+.sectorsSlider::before,
+.sectorsSlider::after {
+  content: '';
+  flex: 0 0 1px;
+  min-width: 0;
+  margin: 0 -12px 0 0;
+}
+
+.sectorCard.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sectorCard:last-child {
+  margin-right: 0;
+}
+
+.sectorCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--sector-primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.sectorCard:hover::before {
+  transform: scaleX(1);
+}
+
+.sectorCard.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sectorCard:focus-visible {
+  outline: 3px solid var(--sector-accent-color);
+  outline-offset: 2px;
+  border-color: var(--sector-primary-color);
+}
+
+.sectorCard:hover {
+  border-color: var(--sector-primary-color);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.cardImageContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.sectorImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sectorCard:hover .sectorImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7));
+  z-index: 1;
+}
+
+.sectorIcon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cardContent {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.sectorName {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--sector-text-color);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.sectorDescription {
+  color: var(--sector-text-light);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+.learnMoreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sector-primary-color);
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem 0.5rem 0;
+  transition: var(--sector-transition);
+  position: relative;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.learnMoreButton::after {
+  content: '';
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--sector-accent-color);
+  transform: scaleX(0.8);
+  transform-origin: right;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  opacity: 0.7;
+}
+
+.learnMoreButton:hover {
+  color: var(--sector-secondary-color);
+}
+
+.learnMoreButton:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  opacity: 1;
+  background: var(--sector-primary-color);
+}
+
+.learnMoreButton:focus-visible {
+  outline: 2px solid var(--sector-accent-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Puntos de navegación */
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding: 0.5rem 0;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--sector-gray-200);
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: var(--sector-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.dot::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--sector-primary-color);
+  transform: scale(0);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+  border-color: var(--sector-primary-color);
+}
+
+.dot:hover::before,
+.activeDot::before {
+  transform: scale(0.6);
+}
+
+.activeDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--sector-primary-color);
+  transform: scale(1.2);
+  cursor: default;
+}
+
+.activeDot::before {
+  transform: scale(0.6);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .sectorCard {
+    flex: 0 0 calc(50% - 1rem);
+  }
+  
+  .sectorsTitle {
+    font-size: 2.25rem;
+  }
+  
+  .subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectorsSection {
+    padding: 4rem 1rem;
   }
   
   .sectorsTitle {
     font-size: 2rem;
-    color: var(--secondary-color);
-    margin-bottom: 2rem;
   }
   
-  /* Contenedor del slider */
-  .sectorsSlider {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 1.5rem;
-    white-space: nowrap;
-    scrollbar-width: none;
+  .subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
   }
   
-  .sectorsSlider::-webkit-scrollbar {
+  .sectorCard {
+    flex: 0 0 85%;
+  }
+  
+  .controls {
     display: none;
   }
   
-  /* Tarjetas */
-  .sectorCard {
-    background-color: var(--secondary-color);
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 320px;
-    flex: 0 0 auto;
+  .sectorsSlider {
+    scroll-padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectorsSection {
+    padding: 3rem 0.5rem;
   }
   
-  .sectorImage {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 6px;
+  .sectorsTitle {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sectorCard {
+    flex: 0 0 90%;
+    min-width: 280px;
+  }
+  
+  .cardImageContainer {
+    height: 180px;
   }
   
   .sectorName {
     font-size: 1.25rem;
-    color: var(--text-color);
-    margin-top: 1rem;
   }
   
+  .sectorDescription {
+    font-size: 0.875rem;
+  }
+  
+  .sectorsSlider {
+    margin: 0 -0.5rem;
+    padding: 1rem 0.5rem;
+  }
+  
+  .cardContent {
+    padding: 1.25rem;
+  }
+}

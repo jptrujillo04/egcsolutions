@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./Brand.module.css"; // Importar el CSS module
+import styles from "./Brand.module.css";
+import { FaWhatsapp } from "react-icons/fa";
 
 const brands = [
   { name: "comap", src: "/images/logocomap.png", alt: "comap" },
@@ -43,17 +44,9 @@ export default function BrandsSection() {
   return (
     <section className={styles.brandsSection}>
       <h2 className={styles.brandsTitle}>Marcas Que Comercializamos</h2>
-      <div
-        className={styles.brandsSlider}
-        ref={sliderRef}
-        style={{
-          display: "flex",
-          overflow: "hidden",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className={styles.brandsSlider} ref={sliderRef}>
         {isMobile
-          ? brands.map((brand, index) => (
+          ? [...brands, ...brands].map((brand, index) => (
               <div
                 key={index}
                 className={styles.brandContainer}
@@ -64,6 +57,7 @@ export default function BrandsSection() {
                   alt={brand.alt}
                   className={styles.brandLogo}
                   style={{ width: "150px", height: "auto" }}
+                  loading="lazy"
                 />
               </div>
             ))
@@ -78,9 +72,15 @@ export default function BrandsSection() {
                   alt={brand.alt}
                   className={styles.brandLogo}
                   style={{ width: "150px", height: "auto" }}
+                  loading="lazy"
                 />
               </div>
             ))}
+      </div>
+      <div className={styles.wave}>
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,0V60c0,0,292.5-50,720,0s720,0,720,0V0Z" className={styles.shapeFill}></path>
+        </svg>
       </div>
     </section>
   );

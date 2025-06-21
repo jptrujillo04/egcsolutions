@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styles from "./services.module.css";
 
 export default function ServicesPage() {
+  const titleRef = useRef(null);
   const services = [
     {
       title: "REVISIÓN Y DIAGNÓSTICO GENERAL (OVERHAUL)",
@@ -79,17 +80,49 @@ export default function ServicesPage() {
 
   const totalPages = Math.ceil(services.length / servicesPerPage);
 
+  const scrollToTop = () => {
+    // Usar setTimeout para asegurar que el DOM se haya actualizado
+    setTimeout(() => {
+      if (titleRef.current) {
+        titleRef.current.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+          inline: 'nearest'
+        });
+      } else {
+        window.scrollTo({ 
+          top: 0, 
+          behavior: 'smooth' 
+        });
+      }
+    }, 0);
+  };
+
   const goToPreviousPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(prevPage => {
+        const newPage = prevPage - 1;
+        // Usar el callback para asegurar que el estado se actualizó
+        setTimeout(scrollToTop, 0);
+        return newPage;
+      });
+    }
   };
 
   const goToNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    if (currentPage < totalPages) {
+      setCurrentPage(prevPage => {
+        const newPage = prevPage + 1;
+        // Usar el callback para asegurar que el estado se actualizó
+        setTimeout(scrollToTop, 0);
+        return newPage;
+      });
+    }
   };
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Nuestros Servicios</h1>
+      <h1 ref={titleRef} className={styles.title} id="page-top">Nuestros Servicios</h1>
       <p className={styles.description}>
         Aquí puedes encontrar información detallada sobre todos nuestros
         servicios.
@@ -98,11 +131,14 @@ export default function ServicesPage() {
       <div className={styles.grid}>
         {currentServices.map((service, index) => (
           <div key={index} className={styles.card}>
-            <img
-              src={service.image}
-              alt={service.title}
-              className={styles.image}
-            />
+            <div className={styles.imageContainer}>
+              <img
+                src={service.image}
+                alt={service.title}
+                className={styles.image}
+                loading="lazy"
+              />
+            </div>
             <div className={styles.content}>
               <h3>{service.title}</h3>
               <p>{service.description}</p>

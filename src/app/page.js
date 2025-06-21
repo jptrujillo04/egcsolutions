@@ -11,8 +11,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <Services />
-        <SectorsSection />
         <BrandsSection />
+        <SectorsSection />
       </main>
     </div>
   );

@@ -1,25 +1,51 @@
 .brandsSection {
     text-align: center;
-    padding: 2rem 0;
-    background-color: var(--secondary-color);
+    padding: 4rem 1rem 6rem;
+    background: #ffffff; /* Fondo blanco */
     overflow: hidden;
     width: 100%;
+    position: relative;
   }
   
   .brandsTitle {
-    font-size: 1.7rem;
+    font-size: 2.5rem;
+    font-weight: 800;
     color: var(--primary-color);
-    margin-bottom: 2.5rem;
+    margin: 0 auto 2rem auto;
+    line-height: 1.2;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .brandsTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
   }
   
   .brandsSlider {
     display: flex;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 100%;
-    max-width: 100vw;
-    margin: auto;
+    overflow-x: auto;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 2rem 0;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 2;
   }
   
   .brandContainer {
@@ -38,16 +64,52 @@
   
   /* 📱 Mostrar solo una imagen en móvil */
   @media (max-width: 768px) {
+    .brandsSection {
+      padding: 3rem 1rem 5rem;
+    }
+    
     .brandsSlider {
       justify-content: center;
+      padding: 1.5rem 0;
     }
-  
-    .brandContainer {
-      width: 100vw;
+    
+    .brandsTitle {
+      font-size: 2rem;
     }
-  
+    
     .brandLogo {
       max-width: 120px;
     }
   }
   
+  /* Efecto de ondas en el fondo */
+  .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    line-height: 0;
+    margin: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    transform: rotate(180deg);
+  }
+
+  .shapeFill {
+    fill: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .wave svg {
+      height: 100px;
+    }
+  }
