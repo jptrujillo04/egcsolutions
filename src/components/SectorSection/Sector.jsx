@@ -1,51 +1,61 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import styles from "./Sector.module.css"; // Importar los estilos locales
 
 const sectors = [
-  { name: "Sector Industrial", src: "/images/industrial.jpg" },
-  { name: "Sector Minero", src: "/images/minero.jpg" },
-  { name: "Sector Hospitalario", src: "/images/hospitalario.jpg" },
-  { name: "Sector Industrial", src: "/images/industrial.jpg" },
-  { name: "Sector Minero", src: "/images/minero.jpg" },
-  { name: "Sector Hospitalario", src: "/images/hospitalario.jpg" },
+  {
+    name: "Planta Eléctrica en la Industria Alimentaria",
+    icon: "/icons/sectoralimentario.png",
+    description:
+      "Instalación y mantenimiento de plantas eléctricas en empresas de alimentos.",
+  },
+  {
+    name: "Soluciones Energéticas en el Sector Educativo",
+    icon: "/icons/sectoreducativo.png",
+    description:
+      "Implementación de plantas para asegurar la continuidad del servicio en instituciones educativas.",
+  },
+  {
+    name: "Proyectos en el Sector Salud",
+    icon: "/icons/sectorhospitalario.png",
+    description:
+      "Energía crítica para hospitales y clínicas a través de nuestras plantas eléctricas.",
+  },
+  {
+    name: "Sector Industrial",
+    icon: "/icons/sectorindustria.png",
+    description:
+      "Soluciones de respaldo energético para la industria y procesos productivos.",
+  },
+  {
+    name: "Sector Minero",
+    icon: "/icons/sectorminero.png",
+    description:
+      "Equipos preparados para operar en condiciones exigentes del sector minero.",
+  },
+  {
+    name: "Sector Comercial",
+    icon: "/icons/sectorcomercial.png",
+    description:
+      "Continuidad del servicio en centros comerciales, oficinas y grandes superficies.",
+  },
 ];
 
 export default function SectorsSection() {
-  const sliderRef = useRef(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (sliderRef.current) {
-        const cardWidth = sliderRef.current.querySelector(
-          `.${styles.sectorCard}`
-        ).clientWidth;
-        sliderRef.current.scrollLeft += cardWidth + 16; // Ajusta el scroll en cada paso
-
-        if (
-          sliderRef.current.scrollLeft >=
-          sliderRef.current.scrollWidth - sliderRef.current.clientWidth
-        ) {
-          sliderRef.current.scrollLeft = 0;
-        }
-      }
-    }, 4000); // Cambia cada 4 segundos para una transición más fluida
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className={styles.sectorsSection}>
       <h2 className={styles.sectorsTitle}>Sectores Donde Trabajamos</h2>
-      <div className={styles.sectorsSlider} ref={sliderRef}>
+      <div className={styles.sectorsGrid}>
         {sectors.map((sector, index) => (
           <div key={index} className={styles.sectorCard}>
-            <img
-              src={sector.src}
-              alt={sector.name}
-              className={styles.sectorImage}
-            />
             <h3 className={styles.sectorName}>{sector.name}</h3>
+            <div className={styles.iconWatermark}>
+              <img
+                src={sector.icon}
+                alt={sector.name}
+                className={styles.iconWatermarkImage}
+              />
+            </div>
           </div>
         ))}
       </div>

@@ -11,42 +11,96 @@
     margin-bottom: 2rem;
   }
   
-  /* Contenedor del slider */
-  .sectorsSlider {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 1.5rem;
-    white-space: nowrap;
-    scrollbar-width: none;
-  }
-  
-  .sectorsSlider::-webkit-scrollbar {
-    display: none;
+  /* Contenedor en grid (3 por fila en desktop) */
+  .sectorsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
   
   /* Tarjetas */
   .sectorCard {
+    position: relative;
     background-color: var(--secondary-color);
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    border: 1px solid var(--gray-alpha-200);
+    text-align: left;
+    padding: 2.5rem 2.75rem 2.5rem 2rem; /* más padding a la derecha para respetar el icono */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     width: 320px;
     flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    isolation: isolate;
   }
-  
-  .sectorImage {
+
+  .sectorCard::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    background: radial-gradient(
+      circle at 18% 18%,
+      rgba(255, 215, 128, 0.45),
+      transparent 40%
+    );
+    border-radius: 22px; /* coincide con el radio de la tarjeta para que la esquina sea curva */
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+
+  .sectorCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+  }
+
+  .sectorCard:hover::before {
+    opacity: 1;
+  }
+
+  .iconWatermark {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.11;
+    pointer-events: none;
+  }
+
+  .iconWatermarkImage {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 6px;
+    height: 100%;
+    object-fit: contain;
   }
-  
+
   .sectorName {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: var(--text-color);
-    margin-top: 1rem;
+    font-weight: 600;
+  }
+
+  .sectorDescription {
+    font-size: 0.9rem;
+    color: var(--gray-alpha-200);
+    line-height: 1.4;
   }
   
+  /* Responsive: en pantallas pequeñas las cards ocupan todo el ancho y se centran */
+  @media (max-width: 640px) {
+    .sectorsGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .sectorCard {
+      width: 100%;
+    }
+  }
