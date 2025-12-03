@@ -14,11 +14,12 @@
   /* Contenedor en grid (3 por fila en desktop) */
   .sectorsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2rem;
+    column-gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
   
   /* Tarjetas */
@@ -30,7 +31,7 @@
     text-align: left;
     padding: 2.5rem 2.75rem 2.5rem 2rem; /* más padding a la derecha para respetar el icono */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    width: 320px;
+    width: 100%;
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
@@ -65,15 +66,20 @@
 
   .iconWatermark {
     position: absolute;
-    top: 0.75rem;
+    top: 50%;
     right: 0.75rem;
     width: 90px;
     height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.11;
+    opacity: 0.18;
     pointer-events: none;
+    transform: translateY(-50%);
+  }
+
+  .sectorCard:hover .iconWatermark {
+    opacity: 0.32;
   }
 
   .iconWatermarkImage {
